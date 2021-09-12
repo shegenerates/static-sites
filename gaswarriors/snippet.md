@@ -25,7 +25,7 @@
         <iframe id="minterIframe"
           width="400"
           height="500"
-          src="https://beta.oneclickdapp.com/embed/aurora-include?method=mint&arguments=1,80000000000000000"
+          src="https://beta.oneclickdapp.com/embed/falcon-stop?method=mint&arguments=1,80000000000000000"
           frameborder="0"
         ></iframe>
 
@@ -35,7 +35,7 @@
           var value=$(this).val();
           var wei = value*80000000000000000
 
-          var linkStr = "https://beta.oneclickdapp.com/embed/aurora-include?method=mint&arguments=" + value + "," + wei
+          var linkStr = "https://beta.oneclickdapp.com/embed/falcon-stop?method=mint&arguments=" + value + "," + wei
           $("#minterIframe").attr('src',linkStr);
       });
 
