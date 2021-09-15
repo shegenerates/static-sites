@@ -25,7 +25,7 @@
         <iframe id="minterIframe"
           width="400"
           height="500"
-          src="https://beta.oneclickdapp.com/embed/mission-fluid?method=mint&arguments=1,40000000000000000"
+          src="https://beta.oneclickdapp.com/embed/mission-fluid?hideArguments=true&method=mint&arguments=1,40000000000000000"
           frameborder="0"
         ></iframe>
 
@@ -35,7 +35,7 @@
           var value=$(this).val();
           var wei = value*40000000000000000
 
-          var linkStr = "https://beta.oneclickdapp.com/embed/mission-fluid?method=earlyMint&arguments=" + value + "," + wei
+          var linkStr = "https://beta.oneclickdapp.com/embed/mission-fluid?hideArguments=true&method=earlyMint&arguments=" + value + "," + wei
           $("#minterIframe").attr('src',linkStr);
       });
 
