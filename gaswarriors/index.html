@@ -29,7 +29,7 @@
         <iframe id="minterIframe"
           width="400"
           height="500"
-          src="https://beta.oneclickdapp.com/embed/mission-fluid?hideArguments=true&method=mint&arguments=1,40000000000000000"
+          src="https://oneclickdapp-v2-q2f0dkwou-pi0neerpat.vercel.app/embed/mission-fluid?method=mint&arguments=1,40000000000000000&hideArguments=true"
           frameborder="0"
         ></iframe>
 
@@ -43,7 +43,7 @@
           var value=$(this).val();
           var wei = value*40000000000000000
 
-          var linkStr = "https://beta.oneclickdapp.com/embed/mission-fluid?hideArguments=true&method=mint&arguments=" + value + "," + wei
+          var linkStr = "https://oneclickdapp-v2-q2f0dkwou-pi0neerpat.vercel.app/embed/mission-fluid?hideArguments=true&method=mint&arguments=" + value + "," + wei
           $("#minterIframe").attr('src',linkStr);
           $("#minterIframe").contents().find(".mb-4").hide();
     });
