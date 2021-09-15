@@ -36,16 +36,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script>
     //$('.mb-4').eq(1).hide();
-    
+    $("#minterIframe").contents().find(".mb-4").hide();
+      
     $("#numberPick").on('change',function(){
           var value=$(this).val();
           var wei = value*40000000000000000
 
           var linkStr = "https://beta.oneclickdapp.com/embed/mission-fluid?method=mint&arguments=" + value + "," + wei
           $("#minterIframe").attr('src',linkStr);
-          $("#minterIframe").('mb-4').style.border = '1px solid #c97cef' 
-      
-      
+          $("#minterIframe").contents().find(".mb-4").hide();
       });
 
   </script>
