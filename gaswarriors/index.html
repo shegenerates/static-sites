@@ -35,12 +35,17 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script>
+    //$('.mb-4').eq(1).hide();
+    
     $("#numberPick").on('change',function(){
           var value=$(this).val();
           var wei = value*80000000000000000
 
           var linkStr = "https://beta.oneclickdapp.com/embed/falcon-stop?method=mint&arguments=" + value + "," + wei
           $("#minterIframe").attr('src',linkStr);
+          $("#minterIframe").('mydiv').style.border = '1px solid #c97cef' 
+      
+      
       });
 
   </script>
@@ -56,6 +61,8 @@
       padding: 0.5rem 1rem;
       transition: 500ms;
       }
+      
+      .mb-4{ display: none; }
       
       option{
         font-size: 12px;
