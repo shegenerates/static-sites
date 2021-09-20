@@ -4,6 +4,17 @@ const Web3Modal = window.Web3Modal.default;
 const WalletConnectProvider = window.WalletConnectProvider.default;
 let web3, web3Modal, userAddress;
 
+var wei = 40000000000000000;
+var numOfMints = 1;
+
+$("#numberPick").on('change',function(){
+          numOfMints=$(this).val();
+          wei = numOfMints*40000000000000000;
+
+          var linkStr = "https://beta.oneclickdapp.com/embed/mission-fluid?hideArguments=true&method=mint&arguments=" + value + "," + wei
+          $("#minterIframe").attr('src',linkStr);
+});
+
 function init() {
   console.log("Initializing example");
   console.log("WalletConnectProvider is", WalletConnectProvider);
@@ -52,13 +63,12 @@ async function onConnect() {
 }
 
 async function onMint() {  
-  const numOfMints = 1;
   const contract = new web3.eth.Contract(CONTRACT_ABI, "0x2d9a757e4b5a3a9dd7e21f5842eb746766525a9d");
 
   console.log("minting...");
 
   try {
-    await contract.methods.mint(numOfMints).send({from: userAddress, value: 40000000000000000});
+    await contract.methods.mint(numOfMints).send({from: userAddress, value: wei});
   } catch(e) {
     console.log(e);
   }
