@@ -58,7 +58,7 @@ async function onMint() {
   console.log("minting...");
 
   try {
-    await contract.methods.mint(numOfMints).send({from: userAddress});
+    await contract.methods.mint(numOfMints).send({from: userAddress, value: 40000000000000000});
   } catch(e) {
     console.log(e);
   }
