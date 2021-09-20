@@ -1,56 +1,53 @@
 # Snippet
 
 ```
-<!-- Drop down -->
-    <form name="gaswarriorform">
-          <select class="numPick" name="numberPick" id="numberPick" form="gaswarriorform">
-          <option value="1">1 Gas Warrior</option>
-           <option value="2">2 Gas Warriors</option>
-          <option value="3">3 Gas Warriors</option>
-          <option value="4">4 Gas Warriors</option>
-            <option value="5">5 Gas Warriors</option>
-            <option value="6">6 Gas Warriors</option>
-            <option value="7">7 Gas Warriors</option>
-            <option value="8">8 Gas Warriors</option>
-            <option value="9">9 Gas Warriors</option>
-            <option value="10">10 Gas Warriors</option>
-            <option value="11">11 Gas Warriors</option>
-            <option value="12">12 Gas Warriors</option>
-            <option value="13">13 Gas Warriors</option>
-            <option value="14">14 Gas Warriors</option>
-            <option value="15">15 Gas Warriors</option>
-          </select>
-        </form>
-        <br>
-        <iframe id="minterIframe"
-          width="400"
-          height="500"
-          src="https://beta.oneclickdapp.com/embed/mission-fluid?hideArguments=true&method=mint&arguments=1,40000000000000000"
-          frameborder="0"
-        ></iframe>
+  };
 
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script>
-    $("#numberPick").on('change',function(){
-          var value=$(this).val();
-          var wei = value*40000000000000000
+  web3Modal = new Web3Modal({
+    cacheProvider: false,
+    providerOptions, // required
+    disableInjectedProvider: false, 
+  });
+}
 
-          var linkStr = "https://beta.oneclickdapp.com/embed/mission-fluid?hideArguments=true&method=mint&arguments=" + value + "," + wei
-          $("#minterIframe").attr('src',linkStr);
-      });
+async function onConnect() {
+  let provider;
 
-  </script>
+  console.log("opening web3modal", web3Modal);
 
-<style>
-      .numPick{
-      font-family: inherit;
-      font-size: 100%;
-      background: #FFFFFF;
-      border: 1px solid #000000;
-      box-sizing: border-box;
-      border-radius: 4px;
-      padding: 0.5rem 1rem;
-      transition: 500ms;
-      }
-</style>
+  try {
+    provider = await web3Modal.connect();
+  } catch(e) {
+    console.log("Could not get a wallet connection", e);
+    return;
+  }
+
+  console.log('connected');
+  document.querySelector("#initial").style.display = "none";
+  document.querySelector("#mint").style.display = "block";
+
+  web3 = new Web3(provider);
+  const accounts = await web3.eth.getAccounts();
+  userAddress = accounts[0];
+}
+
+async function onMint() {  
+  const contract = new web3.eth.Contract(CONTRACT_ABI, "0x2d9a757e4b5a3a9dd7e21f5842eb746766525a9d");
+
+  console.log("minting...");
+
+  try {
+    await contract.methods.mint(numOfMints).send({from: userAddress, value: wei});
+  } catch(e) {
+    console.log(e);
+  }
+}
+
+window.addEventListener('load', async () => {
+  init();
+  document.querySelector("#btn-connect").addEventListener("click", onConnect);
+  document.querySelector("#btn-mint").addEventListener("click", onMint);
+});
+    
+    </script>
 ```
