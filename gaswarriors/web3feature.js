@@ -10,9 +10,6 @@ var numOfMints = 1;
 $("#numberPick").on('change',function(){
           numOfMints=$(this).val();
           wei = numOfMints*40000000000000000;
-
-          var linkStr = "https://beta.oneclickdapp.com/embed/mission-fluid?hideArguments=true&method=mint&arguments=" + value + "," + wei
-          $("#minterIframe").attr('src',linkStr);
 });
 
 function init() {
