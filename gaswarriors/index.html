@@ -3,6 +3,7 @@
     <title>Minting Example</title>
   </head>
   <body>
+    <p>0 fee minting</p>
      <form name="gaswarriorform">
           <select class="numPick" name="numberPick" id="numberPick" form="gaswarriorform">
           <option value="1">1 Gas Warrior</option>
@@ -42,12 +43,10 @@ const Web3Modal = window.Web3Modal.default;
 const WalletConnectProvider = window.WalletConnectProvider.default;
 let web3, web3Modal, userAddress;
 
-var wei = 40000000000000000;
 var numOfMints = 1;
 
 $("#numberPick").on('change',function(){
           numOfMints=$(this).val();
-          wei = numOfMints*40000000000000000;
 });
 
 function init() {
@@ -72,7 +71,7 @@ function init() {
   web3Modal = new Web3Modal({
     cacheProvider: false,
     providerOptions, // required
-    disableInjectedProvider: false, 
+    disableInjectedProvider: false,
   });
 }
 
@@ -97,13 +96,13 @@ async function onConnect() {
   userAddress = accounts[0];
 }
 
-async function onMint() {  
+async function onMint() {
   const contract = new web3.eth.Contract(CONTRACT_ABI, "0x2d9a757e4b5a3a9dd7e21f5842eb746766525a9d");
 
   console.log("minting...");
 
   try {
-    await contract.methods.mint(numOfMints).send({from: userAddress, value: wei});
+    await contract.methods.mint(numOfMints).send({from: userAddress});
   } catch(e) {
     console.log(e);
   }
@@ -114,7 +113,7 @@ window.addEventListener('load', async () => {
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-mint").addEventListener("click", onMint);
 });
-    
+
     </script>
   </body>
 </html>
