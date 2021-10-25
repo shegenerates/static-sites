@@ -116,4 +116,9 @@ window.addEventListener('load', async () => {
 });
     
     </script>
+    <style>
+      #btn-mint{
+        font-size: 20px;
+      }
+    </style>
 ```
