@@ -44,12 +44,10 @@ const Web3Modal = window.Web3Modal.default;
 const WalletConnectProvider = window.WalletConnectProvider.default;
 let web3, web3Modal, userAddress;
 
-var wei = 40000000000000000;
 var numOfMints = 1;
 
 $("#numberPick").on('change',function(){
           numOfMints=$(this).val();
-          wei = numOfMints*40000000000000000;
 });
 
 function init() {
@@ -105,7 +103,7 @@ async function onMint() {
   console.log("minting...");
 
   try {
-    await contract.methods.mint(numOfMints).send({from: userAddress, value: wei});
+    await contract.methods.mint(numOfMints).send({from: userAddress});
   } catch(e) {
     console.log(e);
   }
