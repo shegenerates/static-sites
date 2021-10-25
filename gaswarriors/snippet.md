@@ -26,9 +26,9 @@
         </form>
     <br><br>
     <div id="initial">
-      <button id="btn-connect" style="display: block; margin: 50px auto;">Connect Wallet</button>
+      <button class="web3btn" id="btn-connect" style="display: block; margin: 50px auto;">Connect Wallet</button>
     </div>
-    <div id="mint" style="display: none">
+    <div class="web3btn" id="mint" style="display: none">
       <button id="btn-mint" style="display: block; margin: 50px auto;">Mint</button>
     </div>
     <!-- web3 and web3modal packages -->
@@ -115,10 +115,12 @@ window.addEventListener('load', async () => {
   document.querySelector("#btn-mint").addEventListener("click", onMint);
 });
     
-    </script>
     <style>
-      #btn-mint{
+      .web3btn{
         font-size: 20px;
+        padding: 20px;
+        margin: 5px;
+        min-width: 125px;
       }
     </style>
 ```
