@@ -1,10 +1,6 @@
 # Snippet
 
 ```
-<head>
-    <title>Minting Example</title>
-  </head>
-  <body>
      <form name="gaswarriorform">
           <select class="numPick" name="numberPick" id="numberPick" form="gaswarriorform">
           <option value="1">1 Gas Warrior</option>
@@ -26,10 +22,10 @@
         </form>
     <br><br>
     <div id="initial">
-      <button class="web3btn" id="btn-connect" style="display: block; margin: 50px auto;">Connect Wallet</button>
+      <button class="web3btn" id="btn-connect" style="font-size: 20px; padding: 20px; margin: 5px; width: 125px; color: #fff; background-color: #6fb3ab; border-color: #6fb3ab;">Connect Wallet</button>
     </div>
     <div class="web3btn" id="mint" style="display: none">
-      <button id="btn-mint" style="display: block; margin: 50px auto;">Mint</button>
+      <button id="btn-mint" style="font-size: 20px; padding: 20px; margin: 5px; width: 125px; color: #fff; background-color: #6fb3ab; border-color: #6fb3ab;">Mint</button>
     </div>
     <!-- web3 and web3modal packages -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -114,13 +110,5 @@ window.addEventListener('load', async () => {
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-mint").addEventListener("click", onMint);
 });
-    
-    <style>
-      .web3btn{
-        font-size: 20px;
-        padding: 20px;
-        margin: 5px;
-        min-width: 125px;
-      }
-    </style>
+</script>
 ```
